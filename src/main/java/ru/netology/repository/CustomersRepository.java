@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 @Repository
 public class CustomersRepository {
 
@@ -25,6 +26,7 @@ public class CustomersRepository {
         queryFile = read("query.sql");
         return namedParameterJdbcTemplate.queryForList(queryFile, Map.of("name", name), String.class);
     }
+
     private static String read(String scriptFileName) {
         try (InputStream is = new ClassPathResource(scriptFileName).getInputStream();
              BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is))) {
